@@ -11,6 +11,18 @@ $text-color: #333;
 $security_alert-color: #800000;
 $security_alert-text-color: #fff;
 
+$notification-data:(
+  'checkbox',
+  'star',
+  'archive',
+  'subject',
+  'icon',
+  'repo',
+  'subject-author',
+  'reason',
+  'date'
+);
+
 @import 'bootstrap-custom';
 @import "patterns/blankslate";
 
@@ -43,15 +55,25 @@ body {
   }
 
   .notification{
-    div{
-      padding:0.6rem;
+    @each $item in $notification-data {
+      .notification-#{$item} {
+        margin-right: 0.6rem;
+        text-overflow: ellipsis;
+        @include media-breakpoint-down(sm){
+          margin-right: unset;
+          text-overflow: unset;
+        }
+      }
     }
     .d-flex{
-      padding:0.6rem;
-      div{
-        padding: 0;
+      padding: 0.6rem 0;
+      @include media-breakpoint-down(sm){
+        padding: 0.6rem 0.6rem;
+        .notifiction-reason, .notification-date {
+          text-align: right;
+        }
       }
-    }  
+    }
   }
 
   .thread{
