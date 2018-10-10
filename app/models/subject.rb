@@ -14,6 +14,7 @@ class Subject < ApplicationRecord
   validates :url, presence: true, uniqueness: true
 
   after_update :sync_involved_users
+  after_save :push_to_channels
 
   def update_labels(remote_labels)
     existing_labels = labels.to_a
@@ -80,6 +81,10 @@ class Subject < ApplicationRecord
         self.save if changed?
       end
     end
+  end
+
+  def push_to_channels
+    notifications.find_each(&:push_to_channel)
   end
 
   private
