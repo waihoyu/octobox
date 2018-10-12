@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2018_10_12_132332) do
     t.boolean "locked"
     t.string "sha"
     t.string "status"
+    t.text "body"
     t.index ["url"], name: "index_subjects_on_url"
   end
 
