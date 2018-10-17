@@ -47,7 +47,7 @@
   </td>
   <td class='notification-subject'>
     <% notification_url = Octobox.include_comments? ? notification_url(notification) : notification.web_url %>
-    <%= link_to notification.subject_title, notification_url, target: (Octobox.config.open_in_same_tab ? nil : '_blank'), rel: "noopener", class: 'js-link link', onclick: "Octobox.markRead(#{notification.id})", data:{toggle:"offcanvas"} %>
+    <%= link_to notification.subject_title, notification_url, target: (Octobox.config.open_in_same_tab ? nil : '_blank'), rel: "noopener", class: 'subject-link link', onclick: "Octobox.markRead(#{notification.id})", data:{toggle:"showthread"} %>
 
     <% if notification.display_subject? %>
       <% if notification.subject %>
